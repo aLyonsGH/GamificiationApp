@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "3ED25595-6995-4EDF-842E-5F900B64BF67"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D24105E-AED7-4009-AF7C-B19484B9423E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Gamification App/Singleton.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "5"
+            endingLineNumber = "5"
+            landmarkName = "TaskManager"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  uuid = "6D24105E-AED7-4009-AF7C-B19484B9423E - ec3471c479716abd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "globalinit_33_EA75B2C3DF3F80B3888804CA5450B8C4_func1"
+                  moduleName = "Gamification App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Alex/Desktop/CODING/SWIFT/Gamification%20App/Gamification%20App/Singleton.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "6D24105E-AED7-4009-AF7C-B19484B9423E - 5519a04a27378728"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Gamification_App.TaskManager.(taskManager in _EA75B2C3DF3F80B3888804CA5450B8C4).unsafeMutableAddressor : Swift.Optional&lt;Gamification_App.TaskManager&gt;"
+                  moduleName = "Gamification App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/Alex/Desktop/CODING/SWIFT/Gamification%20App/Gamification%20App/Singleton.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "5"
+                  endingLineNumber = "5"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
