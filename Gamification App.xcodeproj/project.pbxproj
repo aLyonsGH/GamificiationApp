@@ -7,15 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA4A8D9725DED570004973D2 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A8D9625DED570004973D2 /* Task.swift */; };
+		FA4A8D9A25DED606004973D2 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */; };
+		FA52C96125EDEF91009AD32A /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52C96025EDEF91009AD32A /* ImageViewController.swift */; };
+		FA75602525E8AE8F00D89E33 /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA75602425E8AE8F00D89E33 /* Singleton.swift */; };
+		FA75602B25E8B35300D89E33 /* TaskManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA75602A25E8B35300D89E33 /* TaskManagerViewController.swift */; };
 		FA9CA9E425DD559900714AB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9E325DD559900714AB1 /* AppDelegate.swift */; };
 		FA9CA9E625DD559900714AB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9E525DD559900714AB1 /* SceneDelegate.swift */; };
 		FA9CA9E825DD559900714AB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9CA9E725DD559900714AB1 /* ViewController.swift */; };
 		FA9CA9EB25DD559900714AB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9E925DD559900714AB1 /* Main.storyboard */; };
 		FA9CA9ED25DD559E00714AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9EC25DD559E00714AB1 /* Assets.xcassets */; };
 		FA9CA9F025DD559E00714AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9EE25DD559E00714AB1 /* LaunchScreen.storyboard */; };
+		FA9CA9FD25DD6B8900714AB1 /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9FC25DD6B8900714AB1 /* testImage.jpeg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA4A8D9625DED570004973D2 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
+		FA52C96025EDEF91009AD32A /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewController.swift; path = ../../../../../Downloads/ImageViewController.swift; sourceTree = "<group>"; };
+		FA75602425E8AE8F00D89E33 /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		FA75602A25E8B35300D89E33 /* TaskManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskManagerViewController.swift; sourceTree = "<group>"; };
 		FA9CA9E025DD559900714AB1 /* Gamification App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gamification App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA9CA9E325DD559900714AB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA9CA9E525DD559900714AB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +35,7 @@
 		FA9CA9EC25DD559E00714AB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA9CA9EF25DD559E00714AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA9CA9F125DD559E00714AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA9CA9FC25DD6B8900714AB1 /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = testImage.jpeg; path = ../../../../testImage.jpeg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,9 +71,15 @@
 				FA9CA9E325DD559900714AB1 /* AppDelegate.swift */,
 				FA9CA9E525DD559900714AB1 /* SceneDelegate.swift */,
 				FA9CA9E725DD559900714AB1 /* ViewController.swift */,
+				FA75602425E8AE8F00D89E33 /* Singleton.swift */,
+				FA4A8D9625DED570004973D2 /* Task.swift */,
+				FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */,
+				FA52C96025EDEF91009AD32A /* ImageViewController.swift */,
+				FA75602A25E8B35300D89E33 /* TaskManagerViewController.swift */,
 				FA9CA9E925DD559900714AB1 /* Main.storyboard */,
 				FA9CA9EC25DD559E00714AB1 /* Assets.xcassets */,
 				FA9CA9EE25DD559E00714AB1 /* LaunchScreen.storyboard */,
+				FA9CA9FC25DD6B8900714AB1 /* testImage.jpeg */,
 				FA9CA9F125DD559E00714AB1 /* Info.plist */,
 			);
 			path = "Gamification App";
@@ -126,6 +144,7 @@
 			files = (
 				FA9CA9F025DD559E00714AB1 /* LaunchScreen.storyboard in Resources */,
 				FA9CA9ED25DD559E00714AB1 /* Assets.xcassets in Resources */,
+				FA9CA9FD25DD6B8900714AB1 /* testImage.jpeg in Resources */,
 				FA9CA9EB25DD559900714AB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -137,9 +156,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4A8D9725DED570004973D2 /* Task.swift in Sources */,
+				FA75602525E8AE8F00D89E33 /* Singleton.swift in Sources */,
 				FA9CA9E825DD559900714AB1 /* ViewController.swift in Sources */,
 				FA9CA9E425DD559900714AB1 /* AppDelegate.swift in Sources */,
 				FA9CA9E625DD559900714AB1 /* SceneDelegate.swift in Sources */,
+				FA4A8D9A25DED606004973D2 /* AddTaskViewController.swift in Sources */,
+				FA52C96125EDEF91009AD32A /* ImageViewController.swift in Sources */,
+				FA75602B25E8B35300D89E33 /* TaskManagerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,7 +311,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SPZ6KNS4A;
 				INFOPLIST_FILE = "Gamification App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,7 +331,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2SPZ6KNS4A;
 				INFOPLIST_FILE = "Gamification App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
