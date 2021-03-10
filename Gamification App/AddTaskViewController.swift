@@ -66,10 +66,13 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet weak var dateInput: UIDatePicker!
     @IBAction func AddTaskButton(_ sender: UIButton) {
         TaskManager.getTaskManager().createTask(label: labelInput.text!, completed: true, description: descriptionInput.text!, taskImg: #imageLiteral(resourceName: "testImage.jpeg"), dateDue: dateInput.date, taskType: TaskManager.getTaskType(taskType: currentPickerVal))
+        print("new task created")
+        print(TaskManager.getTaskManager().getTasks().count)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("add task loaded")
         typeInput.dataSource = self
         typeInput.delegate = self
         imagePicker.delegate = self

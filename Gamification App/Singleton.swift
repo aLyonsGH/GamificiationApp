@@ -1,4 +1,5 @@
 import UIKit
+
 class TaskManager {
 
     private static var tasks = [Task]()
@@ -52,7 +53,7 @@ class TaskManager {
     }
     
     //update
-    private func updateTaskLabel(label: String, task: Task){
+    func updateTaskLabel(label: String, task: Task){
         for t in TaskManager.tasks {
             if t === task{
                 t.label = label
@@ -60,7 +61,7 @@ class TaskManager {
         }
     }
     
-    private func updateTaskDescription(description: String, task: Task){
+    func updateTaskDescription(description: String, task: Task){
         for t in TaskManager.tasks {
             if t === task{
                 t.description = description
@@ -68,7 +69,7 @@ class TaskManager {
         }
     }
     
-    private func updateTaskDueDate(dueDate: Date, task: Task){
+    func updateTaskDueDate(dueDate: Date, task: Task){
         for t in TaskManager.tasks {
             if t === task{
                 t.dateDue = dueDate
@@ -76,7 +77,7 @@ class TaskManager {
         }
     }
     
-    private func updateTaskImage(taskImg: UIImage, task: Task){
+    func updateTaskImage(taskImg: UIImage, task: Task){
         for t in TaskManager.tasks {
             if t === task{
                 t.taskImg = taskImg
@@ -85,7 +86,7 @@ class TaskManager {
     }
 
 
-    private func updateTaskType(taskType: Task.TYPE, task: Task){
+    func updateTaskType(taskType: Task.TYPE, task: Task){
         for t in TaskManager.tasks {
             if t === task{
                 t.taskType = taskType
@@ -95,7 +96,7 @@ class TaskManager {
     
     //destroy
     
-    private func updateTaskImage(toRemove: Task){
+    func updateTaskImage(toRemove: Task){
         for i in 0...TaskManager.tasks.count-1{
             if TaskManager.tasks[i] === toRemove{
                 TaskManager.tasks.remove(at: i)
@@ -103,10 +104,10 @@ class TaskManager {
         }
     }
     
+    func deleteTask(toRemove: Int){
+        TaskManager.tasks.remove(at: toRemove)
+    }
     
-    
-    
-    
-    
+
 
 }

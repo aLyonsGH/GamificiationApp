@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA4A3BDA25F0A76300CAFE51 /* UICollectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */; };
+		FA4A3BDD25F0A83200CAFE51 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A3BDC25F0A83200CAFE51 /* MyCollectionViewCell.swift */; };
 		FA4A8D9725DED570004973D2 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A8D9625DED570004973D2 /* Task.swift */; };
 		FA4A8D9A25DED606004973D2 /* AddTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */; };
 		FA52C96125EDEF91009AD32A /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA52C96025EDEF91009AD32A /* ImageViewController.swift */; };
@@ -22,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewControllerTest.swift; sourceTree = "<group>"; };
+		FA4A3BDC25F0A83200CAFE51 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA4A8D9625DED570004973D2 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskViewController.swift; sourceTree = "<group>"; };
 		FA52C96025EDEF91009AD32A /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageViewController.swift; path = ../../../../../Downloads/ImageViewController.swift; sourceTree = "<group>"; };
@@ -76,7 +80,9 @@
 				FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */,
 				FA52C96025EDEF91009AD32A /* ImageViewController.swift */,
 				FA75602A25E8B35300D89E33 /* TaskManagerViewController.swift */,
+				FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */,
 				FA9CA9E925DD559900714AB1 /* Main.storyboard */,
+				FA4A3BDC25F0A83200CAFE51 /* MyCollectionViewCell.swift */,
 				FA9CA9EC25DD559E00714AB1 /* Assets.xcassets */,
 				FA9CA9EE25DD559E00714AB1 /* LaunchScreen.storyboard */,
 				FA9CA9FC25DD6B8900714AB1 /* testImage.jpeg */,
@@ -156,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA4A3BDD25F0A83200CAFE51 /* MyCollectionViewCell.swift in Sources */,
 				FA4A8D9725DED570004973D2 /* Task.swift in Sources */,
 				FA75602525E8AE8F00D89E33 /* Singleton.swift in Sources */,
 				FA9CA9E825DD559900714AB1 /* ViewController.swift in Sources */,
@@ -163,6 +170,7 @@
 				FA9CA9E625DD559900714AB1 /* SceneDelegate.swift in Sources */,
 				FA4A8D9A25DED606004973D2 /* AddTaskViewController.swift in Sources */,
 				FA52C96125EDEF91009AD32A /* ImageViewController.swift in Sources */,
+				FA4A3BDA25F0A76300CAFE51 /* UICollectionViewControllerTest.swift in Sources */,
 				FA75602B25E8B35300D89E33 /* TaskManagerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
