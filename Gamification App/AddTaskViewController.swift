@@ -78,6 +78,27 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         imagePicker.delegate = self
     }
     
+    func editSetup(){
+        if TaskManager.getTaskManager().getTaskToEditIndex() == -1{
+            print("not editing");
+        }
+        else{
+            print("editing");
+            let t = TaskManager.getTaskManager().loadTaskToEdit();
+            labelInput.text = t?.label;
+            descriptionInput.text = t?.description;
+            dateInput.date = t!.dateDue;
+            TaskManager.getTaskManager().setTaskToEdit(toEdit: -1);
+        }
+    
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        editSetup();
+    }
+    
    
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

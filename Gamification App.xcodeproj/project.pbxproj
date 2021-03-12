@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA21E04425FBD44200E9DE84 /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA21E04225FBD44200E9DE84 /* TaskDataModel.xcdatamodeld */; };
 		FA4A3BDA25F0A76300CAFE51 /* UICollectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */; };
 		FA4A3BDD25F0A83200CAFE51 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A3BDC25F0A83200CAFE51 /* MyCollectionViewCell.swift */; };
 		FA4A8D9725DED570004973D2 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A8D9625DED570004973D2 /* Task.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA21E04325FBD44200E9DE84 /* TaskDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel.xcdatamodel; sourceTree = "<group>"; };
 		FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewControllerTest.swift; sourceTree = "<group>"; };
 		FA4A3BDC25F0A83200CAFE51 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA4A8D9625DED570004973D2 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				FA9CA9E525DD559900714AB1 /* SceneDelegate.swift */,
 				FA9CA9E725DD559900714AB1 /* ViewController.swift */,
 				FA75602425E8AE8F00D89E33 /* Singleton.swift */,
+				FA21E04225FBD44200E9DE84 /* TaskDataModel.xcdatamodeld */,
 				FA4A8D9625DED570004973D2 /* Task.swift */,
 				FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */,
 				FA52C96025EDEF91009AD32A /* ImageViewController.swift */,
@@ -162,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA21E04425FBD44200E9DE84 /* TaskDataModel.xcdatamodeld in Sources */,
 				FA4A3BDD25F0A83200CAFE51 /* MyCollectionViewCell.swift in Sources */,
 				FA4A8D9725DED570004973D2 /* Task.swift in Sources */,
 				FA75602525E8AE8F00D89E33 /* Singleton.swift in Sources */,
@@ -375,6 +379,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA21E04225FBD44200E9DE84 /* TaskDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA21E04325FBD44200E9DE84 /* TaskDataModel.xcdatamodel */,
+			);
+			currentVersion = FA21E04325FBD44200E9DE84 /* TaskDataModel.xcdatamodel */;
+			path = TaskDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA9CA9D825DD559900714AB1 /* Project object */;
 }

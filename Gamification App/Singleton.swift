@@ -1,16 +1,25 @@
 import UIKit
+import CoreData
 
 class TaskManager {
 
     private static var tasks = [Task]()
     private static var taskManager: TaskManager? = nil
+    private var taskToEditIndex: Int? = -1;
+    var container: NSPersistentContainer;
 
     private init(tasks: [Task]) {
         TaskManager.tasks = tasks
+        container = NSPersistentContainer(name: "TaskDataModel")
+        container.loadPersistentStores {storeDescription, error in if let error = error{
+            print("Unresolved error \(error)")
+            //storeDescription, error
+        }
+        }
     }
 
 
-    static func getTaskManager() -> TaskManager {
+        static func getTaskManager() -> TaskManager {
         if TaskManager.taskManager == nil{
             TaskManager.taskManager = TaskManager(tasks: tasks)
         }
@@ -22,12 +31,27 @@ class TaskManager {
     
     //create
     func createTask(label: String,completed: Bool,description: String,taskImg: UIImage, dateDue: Date,taskType: Task.TYPE){
-        TaskManager.tasks.append(Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType))
+        save(task: Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType))
     }
     
     //read
     func getTasks() -> [Task]{
-        return TaskManager.tasks
+        //Fetch data from core data
+        //Convert between NSObjects and task objects
+        
+        let managedContext = container.viewContext;
+
+          let fetchRequest =
+            NSFetchRequest<NSManagedObject>(entityName: "TaskData")
+          
+          //3
+          do { //here is where convert data
+            TaskManager.getTaskManager().getTasks() = try managedContext.fetch(fetchRequest)
+          } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+          }
+        
+        return TaskManager.tasks;
     }
     
     func getTask(label: String) -> Task?{
@@ -39,7 +63,7 @@ class TaskManager {
         return nil
     }
     
-    static func getTaskType(taskType: String) -> Task.TYPE{
+        static func getTaskType(taskType: String) -> Task.TYPE{
         if taskType == "School"{
             return Task.TYPE.school
         }
@@ -50,6 +74,18 @@ class TaskManager {
             return Task.TYPE.other
         }
         return Task.TYPE.other
+    }
+    
+    func loadTaskToEdit() ->Task?{
+        return TaskManager.getTaskManager().getTasks()[taskToEditIndex!]
+    }
+    
+    func setTaskToEdit(toEdit: Int?){
+        taskToEditIndex = toEdit;
+    }
+    
+    func getTaskToEditIndex()->Int?{
+        return taskToEditIndex;
     }
     
     //update
@@ -108,6 +144,22 @@ class TaskManager {
         TaskManager.tasks.remove(at: toRemove)
     }
     
-
+    //data model stuff
+    func save(task: Task){
+        let managedContext = container.viewContext;
+        let entity = NSEntityDescription.entity(forEntityName: "TaskData", in: managedContext)!
+        let taskObject = NSManagedObject(entity: entity, insertInto: managedContext);
+        taskObject.setValue(task.label, forKeyPath: "labelData");
+        taskObject.setValue(task.description, forKeyPath: "descriptionData");
+        
+        do {
+            try managedContext.save()
+            TaskManager.tasks.append(task)
+          } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+          }
+        }
+    
+    
 
 }

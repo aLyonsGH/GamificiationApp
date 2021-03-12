@@ -16,6 +16,14 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
         return self.tasksToDisplay.count
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        let pos = indexPath.row;
+        TaskManager.getTaskManager().setTaskToEdit(toEdit: pos);
+        performSegue(withIdentifier: "EditTaskSegue", sender: self)
+
+     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath as IndexPath) as! MyCollectionViewCell
         print("making cell")
@@ -68,10 +76,7 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
         //print("sizes being formatted")
         return CGSize(width: screenWidth, height: 1.0);
         }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //print ("You selected #\(indexPath.item)!")
-    }
+
     
 
 

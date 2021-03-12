@@ -512,6 +512,7 @@
                                             <outlet property="dueDate" destination="GhD-pq-Dyd" id="3ry-T1-ipV"/>
                                             <outlet property="taskButton" destination="Zrm-Rc-jJU" id="oza-ut-NH6"/>
                                             <outlet property="timeLeft" destination="HlF-le-BXI" id="ury-VE-Bbc"/>
+                                            <segue destination="ohG-fe-9sq" kind="show" identifier="EditTaskSegue" id="Fe6-BK-GRp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -519,8 +520,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0S-ZD-aZ8">
                                 <rect key="frame" x="92" y="728" width="1004" height="168"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="1004" id="5Oq-bY-5n1"/>
-                                    <constraint firstAttribute="height" constant="168" id="zZq-1H-vd2"/>
+                                    <constraint firstAttribute="width" constant="1004" id="C81-3b-Ard"/>
+                                    <constraint firstAttribute="height" constant="168" id="vV2-s4-9gZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <inset key="imageEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -530,11 +531,14 @@
                                 </state>
                                 <connections>
                                     <action selector="AddTaskButton:" destination="vLB-Cr-dNP" eventType="touchUpInside" id="jZz-7L-wSp"/>
-                                    <segue destination="ohG-fe-9sq" kind="show" id="HAG-tS-vWX"/>
+                                    <segue destination="ohG-fe-9sq" kind="show" identifier="AddTaskSegue" id="HAG-tS-vWX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Tasks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLl-7r-Lvx">
-                                <rect key="frame" x="125" y="107" width="165" height="42"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tasks" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLl-7r-Lvx">
+                                <rect key="frame" x="109" y="107" width="196" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="EcL-Hz-hCC"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -543,15 +547,15 @@
                         <viewLayoutGuide key="safeArea" id="Dbt-6H-kmd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="d0S-ZD-aZ8" secondAttribute="bottom" constant="-34" id="2Od-9D-QD1"/>
-                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="centerX" secondItem="coA-Q4-wW7" secondAttribute="centerX" id="2fY-8N-5F4"/>
-                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="leading" secondItem="Dbt-6H-kmd" secondAttribute="leading" constant="165" id="9Hi-Yf-2zU"/>
-                            <constraint firstItem="d0S-ZD-aZ8" firstAttribute="leading" secondItem="Dbt-6H-kmd" secondAttribute="leading" constant="92" id="Yt0-Az-8eF"/>
-                            <constraint firstItem="coA-Q4-wW7" firstAttribute="top" secondItem="MLl-7r-Lvx" secondAttribute="bottom" constant="25" id="YuX-pV-De7"/>
-                            <constraint firstItem="Dbt-6H-kmd" firstAttribute="bottom" secondItem="coA-Q4-wW7" secondAttribute="bottom" constant="95" id="cw0-pm-3aC"/>
-                            <constraint firstItem="coA-Q4-wW7" firstAttribute="leading" secondItem="Dbt-6H-kmd" secondAttribute="leading" id="eaj-zv-qNH"/>
-                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="centerX" secondItem="R2a-lv-Yed" secondAttribute="centerX" id="kLO-mc-MBb"/>
-                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="top" secondItem="Dbt-6H-kmd" secondAttribute="top" constant="19" id="mpS-27-40o"/>
+                            <constraint firstItem="coA-Q4-wW7" firstAttribute="top" secondItem="MLl-7r-Lvx" secondAttribute="bottom" constant="8" id="1VD-2I-fp9"/>
+                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="leading" secondItem="Dbt-6H-kmd" secondAttribute="leading" constant="109" id="Bcm-oJ-WdR"/>
+                            <constraint firstItem="d0S-ZD-aZ8" firstAttribute="leading" secondItem="Dbt-6H-kmd" secondAttribute="leading" constant="92" id="F92-fE-lZM"/>
+                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="centerX" secondItem="coA-Q4-wW7" secondAttribute="centerX" id="Fik-3o-e5R"/>
+                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="top" secondItem="Dbt-6H-kmd" secondAttribute="top" constant="19" id="N5A-NP-nCl"/>
+                            <constraint firstItem="coA-Q4-wW7" firstAttribute="leading" secondItem="Dbt-6H-kmd" secondAttribute="leading" id="ZrO-gu-MOx"/>
+                            <constraint firstItem="Dbt-6H-kmd" firstAttribute="bottom" secondItem="coA-Q4-wW7" secondAttribute="bottom" constant="95" id="b1g-JI-szr"/>
+                            <constraint firstItem="MLl-7r-Lvx" firstAttribute="centerX" secondItem="R2a-lv-Yed" secondAttribute="centerX" id="b7w-Wb-no1"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="d0S-ZD-aZ8" secondAttribute="bottom" constant="-34" id="ipK-a2-RMf"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="KhX-qb-AJ3"/>

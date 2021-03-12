@@ -45,6 +45,7 @@ class TaskManagerViewController: UIViewController {
     */
     @IBAction func AddTaskButton(_ sender: Any) {
         
+        print("button transition")
         performSegue(withIdentifier: "AddTaskSegue", sender: self)
         
         
