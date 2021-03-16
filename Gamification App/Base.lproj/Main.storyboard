@@ -512,7 +512,6 @@
                                             <outlet property="dueDate" destination="GhD-pq-Dyd" id="3ry-T1-ipV"/>
                                             <outlet property="taskButton" destination="Zrm-Rc-jJU" id="oza-ut-NH6"/>
                                             <outlet property="timeLeft" destination="HlF-le-BXI" id="ury-VE-Bbc"/>
-                                            <segue destination="ohG-fe-9sq" kind="show" identifier="EditTaskSegue" id="Fe6-BK-GRp"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -543,6 +542,14 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3q-3J-dbD">
+                                <rect key="frame" x="320" y="801" width="74" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="pencil.circle" catalog="system"/>
+                                <connections>
+                                    <action selector="testButtonInfo:" destination="Rhw-vn-hwW" eventType="touchUpInside" id="cfv-7f-ptj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Dbt-6H-kmd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -561,11 +568,12 @@
                     <navigationItem key="navigationItem" id="KhX-qb-AJ3"/>
                     <connections>
                         <outlet property="collectionView" destination="coA-Q4-wW7" id="OyT-bk-25h"/>
+                        <segue destination="ohG-fe-9sq" kind="show" identifier="EditTaskSegue" id="DN6-RG-spK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Vj-h5-p8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-43.478260869565219" y="-142.63392857142856"/>
+            <point key="canvasLocation" x="-48" y="-128"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="d7I-lq-VwQ">
@@ -617,10 +625,11 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HAG-tS-vWX"/>
+        <segue reference="DN6-RG-spK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="trash" catalog="system" width="121" height="128"/>

@@ -20,7 +20,10 @@ class MyCollectionViewCell: UICollectionViewCell {
     
     @IBAction func tempDelete(_ sender: Any) {
         print("trash")
+        //TaskManager.getTaskManager().deleteTask(toRemove: index);
+        TaskManager.getTaskManager().deleteTaskFromCore(taskIndex: index);
         controller.removeCell(toRemovePath: index)
+        
     }
     
 

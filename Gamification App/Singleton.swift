@@ -6,16 +6,22 @@ class TaskManager {
     private static var tasks = [Task]()
     private static var taskManager: TaskManager? = nil
     private var taskToEditIndex: Int? = -1;
+    
+    static var setTasksFromData = false;
+    
     var container: NSPersistentContainer;
 
     private init(tasks: [Task]) {
+        
         TaskManager.tasks = tasks
         container = NSPersistentContainer(name: "TaskDataModel")
         container.loadPersistentStores {storeDescription, error in if let error = error{
             print("Unresolved error \(error)")
             //storeDescription, error
+            }
         }
-        }
+        //REMOVE TO STOP DELETING ALL DATA
+        //deleteAllData(entity: "TaskData");
     }
 
 
@@ -34,24 +40,59 @@ class TaskManager {
         save(task: Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType))
     }
     
+    func createTask(label: String,completed: Bool,description: String,taskImg: UIImage, dateDue: Date,taskType: Task.TYPE, saveToCoreData: Bool){
+        if saveToCoreData{
+            save(task: Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType))
+        }else{
+            TaskManager.tasks.append(Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType));
+        }
+    }
+    
     //read
     func getTasks() -> [Task]{
+        return TaskManager.tasks;
+    }
+    
+    func setTasks(){
         //Fetch data from core data
         //Convert between NSObjects and task objects
         
+        print(" ");
+        print(TaskManager.getTaskManager().getTasks().count);
+        
         let managedContext = container.viewContext;
+        let req: NSFetchRequest<TaskData> = TaskData.fetchRequest()
+        var results : [TaskData]
+
+         do {
+             results = try managedContext.fetch(req)
+         } catch {results =  [TaskData]();}
+        
+        TaskManager.tasks = [Task]();
+        print("Length of results: \(results.count)")
+        for t in results{
+            if !(t.dueDateData==nil){
+                TaskManager.getTaskManager().createTask(label: t.labelData!, completed: true, description: t.descriptionData!, taskImg: #imageLiteral(resourceName: "testImage.jpeg"), dateDue: t.dueDateData!, taskType: TaskManager.getTaskType(taskType: "School"), saveToCoreData: false)
+            }
+        }
+        
+        print(TaskManager.getTaskManager().getTasks().count);
+        
+        print("setting tasks");
+        
+        /*let managedContext = container.viewContext;
 
           let fetchRequest =
             NSFetchRequest<NSManagedObject>(entityName: "TaskData")
           
           //3
           do { //here is where convert data
-            TaskManager.getTaskManager().getTasks() = try managedContext.fetch(fetchRequest)
+            let fetchedData = try managedContext.fetch(fetchRequest)
+            print(fetchedData.);
+            //TaskManager.tasks
           } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
-          }
-        
-        return TaskManager.tasks;
+          }*/
     }
     
     func getTask(label: String) -> Task?{
@@ -146,11 +187,14 @@ class TaskManager {
     
     //data model stuff
     func save(task: Task){
+        
         let managedContext = container.viewContext;
         let entity = NSEntityDescription.entity(forEntityName: "TaskData", in: managedContext)!
         let taskObject = NSManagedObject(entity: entity, insertInto: managedContext);
         taskObject.setValue(task.label, forKeyPath: "labelData");
         taskObject.setValue(task.description, forKeyPath: "descriptionData");
+        taskObject.setValue(task.dateDue, forKeyPath: "dueDateData");
+        print("Length of tasks BEFORE adding a new task to save: \(TaskManager.tasks.count)");
         
         do {
             try managedContext.save()
@@ -158,7 +202,58 @@ class TaskManager {
           } catch let error as NSError {
             print("Could not save. \(error), \(error.userInfo)")
           }
+        
+        print("Length of tasks AFTER adding a new task to save: \(TaskManager.tasks.count)")
         }
+    
+    func deleteAllData(entity: String)
+    {
+        let managedContext = container.viewContext;
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskData");
+        fetchRequest.returnsObjectsAsFaults = false
+        do
+        {
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results
+            {
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }
+        
+        do{try managedContext.save();}
+        catch{}
+    }
+    
+    func deleteTaskFromCore(taskIndex: Int)
+    {
+        print("Length of tasks BEFORE deleting item: \(TaskManager.tasks.count)")
+        let managedContext = container.viewContext;
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskData");
+        fetchRequest.returnsObjectsAsFaults = false
+        do
+        {
+            
+            let results = try managedContext.fetch(fetchRequest)
+            //print("Length of core tasks BEFORE deleting item: \(results.count)");
+            for i in 0..<results.count {
+                let managedObject = results[i];
+                if i == taskIndex{
+                    print("Deleting task at index: \(taskIndex)");
+                    let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                    managedContext.delete(managedObjectData)
+                    do{try managedContext.save();}
+                    catch{}
+                }
+            }
+            //print("Length of core tasks AFTER deleting item: \(results.count)");
+        } catch let error as NSError {
+            print("Detele all data in TaskData error : \(error) \(error.userInfo)")
+        }
+        print("Length of tasks AFTER deleting item: \(TaskManager.tasks.count)")
+    }
     
     
 

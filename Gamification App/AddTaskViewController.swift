@@ -96,6 +96,7 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         editSetup();
     }
     

@@ -1,6 +1,7 @@
 
 
 import UIKit
+import CoreData
 class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     var tasksToDisplay: [String] = []
@@ -10,6 +11,17 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBAction func testButtonInfo(_ sender: Any) {
+        print("Number of tasks when button clicked: \(TaskManager.getTaskManager().getTasks().count)")
+        let managedContext = TaskManager.getTaskManager().container.viewContext;
+        let req: NSFetchRequest<TaskData> = TaskData.fetchRequest();
+        var results : [TaskData]
+         do {
+             results = try managedContext.fetch(req)
+         } catch {results =  [TaskData]();}
+        print("Number of saved tasks when button clicked: \(results.count)")
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         //print("cells being formatted")
@@ -18,6 +30,7 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
+        print("edit segue");
         let pos = indexPath.row;
         TaskManager.getTaskManager().setTaskToEdit(toEdit: pos);
         performSegue(withIdentifier: "EditTaskSegue", sender: self)
@@ -102,7 +115,9 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
         super.viewWillAppear(animated)
         //print("")
         //print("appear code")
+        TaskManager.getTaskManager().setTasks();
         update();
+        
     }
     
     func resetScreen(){
