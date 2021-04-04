@@ -10,6 +10,7 @@ import UIKit
 class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource,UINavigationControllerDelegate, UIImagePickerControllerDelegate{
     
     var imagePicker = UIImagePickerController();
+    var inputType: String?
 
     @IBAction func addImg(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
@@ -21,19 +22,34 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
                     present(imagePicker, animated: true, completion: nil)
         }
     }
+    
+    func displayImages(pickedImage: UIImage)
+    {
+        for n in 0...visibleImages.count-2 {
+            //self.visibleImages[visibleImages.count-1-n].contentMode = .scaleAspectFit
+            self.visibleImages[visibleImages.count-1-n].image = self.visibleImages[visibleImages.count-1-n-1].image
+        }
+        
+        self.visibleImages[0].contentMode = .scaleAspectFit
+        self.visibleImages[0].image = pickedImage
+    }
 
         
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-                    self.visibleImage.contentMode = .scaleAspectFit
-                self.visibleImage.image = pickedImage
+            
+            displayImages(pickedImage: pickedImage)
         }
         dismiss(animated: true, completion: nil)
 
         }
         
+    @IBOutlet var visibleImages: Array<UIImageView>!
+
     
-    @IBOutlet weak var visibleImage: UIImageView!
+    //@IBOutlet weak var visibleImage: UIImageView!
+    //@IBOutlet weak var visibleImage2: UIImageView!
+    //@IBOutlet weak var visibleImage3: UIImageView!
     
     let pickerData = ["Hobby", "School", "Other"]
     var currentPickerVal = ""
@@ -98,6 +114,7 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         super.viewWillAppear(animated)
         
         editSetup();
+        
     }
     
    

@@ -139,6 +139,13 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
         update();
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddTaskSegue"{
+            let destination = segue.destination as! AddTaskViewController;
+            destination.inputType = "Adding"
+        }
+    }
+    
     
    
 
