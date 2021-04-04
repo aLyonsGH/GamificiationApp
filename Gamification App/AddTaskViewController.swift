@@ -14,11 +14,10 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
     @IBAction func addImg(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
-                    print("Button capture")
 
                     imagePicker.sourceType = .savedPhotosAlbum
                     imagePicker.allowsEditing = false
-                     print("Yo4")
+                
                     present(imagePicker, animated: true, completion: nil)
         }
     }
@@ -26,7 +25,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func displayImages(pickedImage: UIImage)
     {
         for n in 0...visibleImages.count-2 {
-            //self.visibleImages[visibleImages.count-1-n].contentMode = .scaleAspectFit
             self.visibleImages[visibleImages.count-1-n].image = self.visibleImages[visibleImages.count-1-n-1].image
         }
         
@@ -37,7 +35,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            
             displayImages(pickedImage: pickedImage)
         }
         dismiss(animated: true, completion: nil)
@@ -46,11 +43,6 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     @IBOutlet var visibleImages: Array<UIImageView>!
 
-    
-    //@IBOutlet weak var visibleImage: UIImageView!
-    //@IBOutlet weak var visibleImage2: UIImageView!
-    //@IBOutlet weak var visibleImage3: UIImageView!
-    
     let pickerData = ["Hobby", "School", "Other"]
     var currentPickerVal = ""
     
@@ -76,14 +68,24 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
 
 
     
+    @IBOutlet weak var addTaskButtonLabel: UIButton!
     @IBOutlet weak var labelInput: UITextView!
     @IBOutlet weak var descriptionInput: UITextView!
     @IBOutlet weak var typeInput: UIPickerView!
     @IBOutlet weak var dateInput: UIDatePicker!
     @IBAction func AddTaskButton(_ sender: UIButton) {
-        TaskManager.getTaskManager().createTask(label: labelInput.text!, completed: true, description: descriptionInput.text!, taskImg: #imageLiteral(resourceName: "testImage.jpeg"), dateDue: dateInput.date, taskType: TaskManager.getTaskType(taskType: currentPickerVal))
+        print(TaskManager.getTaskManager().getTaskToEditIndex())
+        if(TaskManager.getTaskManager().getTaskToEditIndex()==(-1))
+        {
+            TaskManager.getTaskManager().createTask(label: labelInput.text!, completed: true, description: descriptionInput.text!, taskImages: getImagesFromDisplay(), dateDue: dateInput.date, taskType: TaskManager.getTaskType(taskType: currentPickerVal))
+        }
+        else
+        {
+            TaskManager.getTaskManager().replaceTask(label: labelInput.text!, completed: true, description: descriptionInput.text!, taskImages: getImagesFromDisplay(), dateDue: dateInput.date, taskType: TaskManager.getTaskType(taskType: currentPickerVal))
+        }
         print("new task created")
         print(TaskManager.getTaskManager().getTasks().count)
+        TaskManager.getTaskManager().setTaskToEdit(toEdit: -1);
     }
     
     override func viewDidLoad() {
@@ -94,17 +96,35 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         imagePicker.delegate = self
     }
     
+    func getImagesFromDisplay() -> [UIImage]
+    {
+        /*print("all images not the same:")
+        print(visibleImages[0].image! != visibleImages[1].image! ||
+                visibleImages[0].image! != visibleImages[2].image! ||
+              visibleImages[1].image! != visibleImages[2].image!)*/
+        return [visibleImages[0].image!, visibleImages[1].image!, visibleImages[2].image!]
+    }
+    
     func editSetup(){
         if TaskManager.getTaskManager().getTaskToEditIndex() == -1{
+            addTaskButtonLabel.setTitle("Add Task", for: .normal)
             print("not editing");
         }
         else{
             print("editing");
+            addTaskButtonLabel.setTitle("Edit Task", for: .normal)
             let t = TaskManager.getTaskManager().loadTaskToEdit();
             labelInput.text = t?.label;
             descriptionInput.text = t?.description;
             dateInput.date = t!.dateDue;
-            TaskManager.getTaskManager().setTaskToEdit(toEdit: -1);
+            
+            for i in 0...t!.taskImages.count-1
+            {
+                displayImages(pickedImage: (t?.taskImages[t!.taskImages.count-1-i])!)
+            }
+            
+            
+            //TaskManager.getTaskManager().setTaskToEdit(toEdit: -1);
         }
     
         

@@ -1,10 +1,10 @@
 import UIKit
-class Task {
+class oldTask {
     var label: String
     var completed: Bool
     var description: String
-    //var taskImg: UIImage
-    var taskImages: [UIImage]
+    var taskImg: UIImage
+    
     var dateDue: Date
     let dateCreated: Date = Date()
     enum TYPE {
@@ -13,12 +13,12 @@ class Task {
     var taskType: TYPE
     let dateFormatter = DateFormatter()
     
-    init(label: String,completed: Bool,description: String,taskImages: [UIImage], dateDue: Date, taskType: TYPE) {
+    init(label: String,completed: Bool,description: String,taskImg: UIImage, dateDue: Date, taskType: TYPE) {
         self.label = label
         self.completed = completed
         self.description = description
-        //self.taskImg = taskImg
-        self.taskImages = taskImages
+        self.taskImg = taskImg
+    
         self.taskType = taskType
         self.dateDue = dateDue
         dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"

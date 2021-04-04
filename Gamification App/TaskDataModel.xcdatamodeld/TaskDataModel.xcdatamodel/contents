@@ -4,10 +4,13 @@
     <entity name="TaskData" representedClassName="TaskData" syncable="YES" codeGenerationType="class">
         <attribute name="descriptionData" optional="YES" attributeType="String"/>
         <attribute name="dueDateData" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="firstImageData" optional="YES" attributeType="Binary"/>
         <attribute name="labelData" optional="YES" attributeType="String"/>
+        <attribute name="secondImageData" optional="YES" attributeType="Binary"/>
+        <attribute name="thirdImageData" optional="YES" attributeType="Binary"/>
     </entity>
     <elements>
         <element name="Entity1" positionX="-54" positionY="0" width="128" height="43"/>
-        <element name="TaskData" positionX="-63" positionY="-18" width="128" height="88"/>
+        <element name="TaskData" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>

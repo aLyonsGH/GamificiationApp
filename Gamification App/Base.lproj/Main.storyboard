@@ -426,6 +426,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="4jc-YH-m3k"/>
                     <connections>
+                        <outlet property="addTaskButtonLabel" destination="QdB-0e-LqQ" id="Y7K-RA-vOd"/>
                         <outlet property="dateInput" destination="z3I-fa-zD7" id="VlW-Mk-ZQQ"/>
                         <outlet property="descriptionInput" destination="Xtz-N8-y5f" id="kQ1-ZT-QxU"/>
                         <outlet property="labelInput" destination="GC3-GF-p93" id="ZoX-h7-y7x"/>

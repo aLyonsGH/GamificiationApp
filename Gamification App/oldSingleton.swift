@@ -1,17 +1,15 @@
-import UIKit
+/*import UIKit
 import CoreData
 
 class TaskManager {
 
     private static var tasks = [Task]()
     private static var taskManager: TaskManager? = nil
-    private var taskToEditIndex: Int = -1;
+    private var taskToEditIndex: Int? = -1;
     
     static var setTasksFromData = false;
     
     var container: NSPersistentContainer;
-    
-    var testImages: [UIImage] = [UIImage(systemName: "photo")!,UIImage(systemName: "photo")!]
 
     private init(tasks: [Task]) {
         
@@ -38,42 +36,16 @@ class TaskManager {
     //Crud Methods:
     
     //create
-    func createTask(label: String,completed: Bool,description: String,taskImages: [UIImage], dateDue: Date,taskType: Task.TYPE){
-        save(task: Task(label: label,completed: completed,description: description,taskImages: taskImages, dateDue: dateDue,taskType: taskType))
+    func createTask(label: String,completed: Bool,description: String,taskImg: UIImage, dateDue: Date,taskType: Task.TYPE){
+        save(task: Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType))
     }
     
-    func createTask(label: String,completed: Bool,description: String,taskImages: [UIImage], dateDue: Date,taskType: Task.TYPE, saveToCoreData: Bool){
+    func createTask(label: String,completed: Bool,description: String,taskImg: UIImage, dateDue: Date,taskType: Task.TYPE, saveToCoreData: Bool){
         if saveToCoreData{
-            save(task: Task(label: label,completed: completed,description: description,taskImages: taskImages, dateDue: dateDue,taskType: taskType))
+            save(task: Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType))
         }else{
-            TaskManager.tasks.append(Task(label: label,completed: completed,description: description,taskImages: taskImages, dateDue: dateDue,taskType: taskType));
+            TaskManager.tasks.append(Task(label: label,completed: completed,description: description,taskImg: taskImg, dateDue: dateDue,taskType: taskType));
         }
-    }
-    
-    func replaceTask(label: String,completed: Bool,description: String,taskImages: [UIImage], dateDue: Date,taskType: Task.TYPE){
-        let managedContext = container.viewContext;
-        let req: NSFetchRequest<TaskData> = TaskData.fetchRequest()
-        var results : [TaskData]
-
-         do {
-             results = try managedContext.fetch(req)
-            let ind: Int = getTaskToEditIndex();
-            results[ind].setValue(label, forKeyPath: "labelData");
-            results[ind].setValue(description, forKeyPath: "descriptionData")
-            results[ind].setValue(dateDue, forKeyPath: "dueDateData")
-            results[ind].setValue(taskImages[0].pngData(), forKeyPath: "firstImageData")
-            results[ind].setValue(taskImages[1].pngData(), forKeyPath: "secondImageData")
-            results[ind].setValue(taskImages[2].pngData(), forKeyPath: "thirdImageData")
-            try managedContext.save()
-            TaskManager.tasks[ind].label = label;
-            TaskManager.tasks[ind].description = description;
-            TaskManager.tasks[ind].dateDue = dateDue;
-            TaskManager.tasks[ind].taskImages = taskImages;
-            TaskManager.tasks[ind].taskType = taskType;
-            TaskManager.tasks[ind].completed = completed;
-         } catch {results =  [TaskData](); print("error updating core data edits");}
-        
-        
     }
     
     //read
@@ -94,21 +66,13 @@ class TaskManager {
 
          do {
              results = try managedContext.fetch(req)
-         } catch {results =  [TaskData](); print("error loading results");}
+         } catch {results =  [TaskData]();}
         
-        /*[UIImage(data: t.firstImageData), t.secondImageData, t.thirdImageData]*/
-        
-        if TaskManager.getTaskManager().getTasks().count>0
-        {
-            print(TaskManager.getTaskManager().getTasks()[0].label);
-        }
         TaskManager.tasks = [Task]();
         print("Length of results: \(results.count)")
         for t in results{
-            print(t.labelData);
             if !(t.dueDateData==nil){
-                print("creating task");
-                TaskManager.getTaskManager().createTask(label: t.labelData!, completed: true, description: t.descriptionData!, taskImages: [UIImage(data: t.firstImageData!)!,UIImage(data: t.secondImageData!)!,UIImage(data: t.thirdImageData!)!], dateDue: t.dueDateData!, taskType: TaskManager.getTaskType(taskType: "School"), saveToCoreData: false)
+                TaskManager.getTaskManager().createTask(label: t.labelData!, completed: true, description: t.descriptionData!, taskImg: #imageLiteral(resourceName: "testImage.jpeg"), dateDue: t.dueDateData!, taskType: TaskManager.getTaskType(taskType: "School"), saveToCoreData: false)
             }
         }
         
@@ -154,14 +118,14 @@ class TaskManager {
     }
     
     func loadTaskToEdit() ->Task?{
-        return TaskManager.getTaskManager().getTasks()[taskToEditIndex]
+        return TaskManager.getTaskManager().getTasks()[taskToEditIndex!]
     }
     
-    func setTaskToEdit(toEdit: Int){
+    func setTaskToEdit(toEdit: Int?){
         taskToEditIndex = toEdit;
     }
     
-    func getTaskToEditIndex()->Int{
+    func getTaskToEditIndex()->Int?{
         return taskToEditIndex;
     }
     
@@ -190,13 +154,10 @@ class TaskManager {
         }
     }
     
-    func updateTaskImages(taskImages: [UIImage], task: Task){
+    func updateTaskImage(taskImg: UIImage, task: Task){
         for t in TaskManager.tasks {
             if t === task{
-                for i in 0...t.taskImages.count-1
-                {
-                    t.taskImages[i] = taskImages[i]
-                }
+                t.taskImg = taskImg
             }
         }
     }
@@ -206,7 +167,7 @@ class TaskManager {
         for t in TaskManager.tasks {
             if t === task{
                 t.taskType = taskType
-            } 
+            }
         }
     }
     
@@ -230,15 +191,12 @@ class TaskManager {
         let managedContext = container.viewContext;
         let entity = NSEntityDescription.entity(forEntityName: "TaskData", in: managedContext)!
         let taskObject = NSManagedObject(entity: entity, insertInto: managedContext);
-        
-    
         taskObject.setValue(task.label, forKeyPath: "labelData");
         taskObject.setValue(task.description, forKeyPath: "descriptionData");
         taskObject.setValue(task.dateDue, forKeyPath: "dueDateData");
-        taskObject.setValue(task.taskImages[0].pngData(), forKeyPath: "firstImageData");
-        taskObject.setValue(task.taskImages[1].pngData(), forKeyPath: "secondImageData");
-        taskObject.setValue(task.taskImages[2].pngData(), forKeyPath: "thirdImageData");
-        
+        //taskObject.setValue(task.dateDue, forKeyPath: "dueDateData");
+        //taskObject.setValue(task.dateDue, forKeyPath: "dueDateData");
+        //taskObject.setValue(task.dateDue, forKeyPath: "dueDateData");
         print("Length of tasks BEFORE adding a new task to save: \(TaskManager.tasks.count)");
         
         do {
@@ -302,4 +260,4 @@ class TaskManager {
     
     
 
-}
+}*/
