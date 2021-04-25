@@ -22,8 +22,11 @@ class TaskManager {
             //storeDescription, error
             }
         }
+        
+        
         //REMOVE TO STOP DELETING ALL DATA
         //deleteAllData(entity: "TaskData");
+        //deleteAllData(entity: "CompletionData");
     }
 
 
@@ -254,7 +257,7 @@ class TaskManager {
     func deleteAllData(entity: String)
     {
         let managedContext = container.viewContext;
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "TaskData");
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entity);
         fetchRequest.returnsObjectsAsFaults = false
         do
         {
@@ -298,6 +301,43 @@ class TaskManager {
             print("Detele all data in TaskData error : \(error) \(error.userInfo)")
         }
         print("Length of tasks AFTER deleting item: \(TaskManager.tasks.count)")
+    }
+    
+    func completeTask()
+    {
+        let managedContext = TaskManager.getTaskManager().container.viewContext;
+        let req: NSFetchRequest<CompletionData> = CompletionData.fetchRequest();
+        var results : [CompletionData]
+         do {
+             results = try managedContext.fetch(req)
+            if results.count == 0
+            {
+                setupCompletionData()
+                completeTask()
+            }
+            else
+            {
+                results[0].setValue(results[0].tasksCompletedData+1, forKey: "tasksCompletedData")
+                print("\(results[0].tasksCompletedData) tasks completed")
+            }
+         } catch {results =  [CompletionData]();}
+        
+    }
+    
+    func setupCompletionData()
+    {
+        let managedContext = container.viewContext;
+        let entity = NSEntityDescription.entity(forEntityName: "CompletionData", in: managedContext)!
+        
+        let taskObject = NSManagedObject(entity: entity, insertInto: managedContext);
+        taskObject.setValue(0, forKeyPath: "tasksCompletedData");
+    
+        do {
+            try managedContext.save()
+            
+          } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+          }
     }
     
     

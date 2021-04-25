@@ -487,11 +487,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2xu-ZE-xft">
-                                                    <rect key="frame" x="366" y="35" width="74" height="22"/>
+                                                    <rect key="frame" x="367" y="14" width="20" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button" image="trash" catalog="system"/>
+                                                    <state key="normal" image="trash" catalog="system"/>
                                                     <connections>
                                                         <action selector="tempDelete:" destination="K9a-bX-4Eu" eventType="touchUpInside" id="xyP-Jg-pCC"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LvZ-fG-tcg">
+                                                    <rect key="frame" x="362" y="50" width="30" height="22"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="checkmark.circle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="completeTask:" destination="K9a-bX-4Eu" eventType="touchUpInside" id="4Ve-PH-vPh"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -562,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Vj-h5-p8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-48" y="-128"/>
+            <point key="canvasLocation" x="-49.275362318840585" y="-128.57142857142856"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="d7I-lq-VwQ">
@@ -618,6 +626,7 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
+        <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="pencil.circle" catalog="system" width="128" height="121"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <image name="plus" catalog="system" width="128" height="113"/>

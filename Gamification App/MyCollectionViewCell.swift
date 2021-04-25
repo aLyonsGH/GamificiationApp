@@ -26,5 +26,11 @@ class MyCollectionViewCell: UICollectionViewCell {
         
     }
     
-
+    @IBAction func completeTask(_ sender: Any) {
+        TaskManager.getTaskManager().deleteTaskFromCore(taskIndex: index);
+        controller.removeCell(toRemovePath: index)
+        TaskManager.getTaskManager().completeTask()
+        
+    }
+    
 }

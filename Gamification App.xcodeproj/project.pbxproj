@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA21E04425FBD44200E9DE84 /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA21E04225FBD44200E9DE84 /* TaskDataModel.xcdatamodeld */; };
 		FA4A3BDA25F0A76300CAFE51 /* UICollectionViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */; };
 		FA4A3BDD25F0A83200CAFE51 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A3BDC25F0A83200CAFE51 /* MyCollectionViewCell.swift */; };
 		FA4A8D9725DED570004973D2 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA4A8D9625DED570004973D2 /* Task.swift */; };
@@ -23,10 +22,11 @@
 		FA9CA9ED25DD559E00714AB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9EC25DD559E00714AB1 /* Assets.xcassets */; };
 		FA9CA9F025DD559E00714AB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9EE25DD559E00714AB1 /* LaunchScreen.storyboard */; };
 		FA9CA9FD25DD6B8900714AB1 /* testImage.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = FA9CA9FC25DD6B8900714AB1 /* testImage.jpeg */; };
+		FAB84D662635058900761CB2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = FAB84D652635058900761CB2 /* Alamofire */; };
+		FAEA531E261A926F0002D858 /* TaskDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAEA531C261A926F0002D858 /* TaskDataModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA21E04325FBD44200E9DE84 /* TaskDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel.xcdatamodel; sourceTree = "<group>"; };
 		FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewControllerTest.swift; sourceTree = "<group>"; };
 		FA4A3BDC25F0A83200CAFE51 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA4A8D9625DED570004973D2 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -44,6 +44,7 @@
 		FA9CA9EF25DD559E00714AB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA9CA9F125DD559E00714AB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA9CA9FC25DD6B8900714AB1 /* testImage.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = testImage.jpeg; path = ../../../../testImage.jpeg; sourceTree = "<group>"; };
+		FAEA531D261A926F0002D858 /* TaskDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB84D662635058900761CB2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,9 +83,9 @@
 				FA9CA9E725DD559900714AB1 /* ViewController.swift */,
 				FA75602425E8AE8F00D89E33 /* Singleton.swift */,
 				FA9503F2261A51C500019E69 /* oldSingleton.swift */,
-				FA21E04225FBD44200E9DE84 /* TaskDataModel.xcdatamodeld */,
 				FA4A8D9625DED570004973D2 /* Task.swift */,
 				FA9503EF261A510100019E69 /* oldTask.swift */,
+				FAEA531C261A926F0002D858 /* TaskDataModel.xcdatamodeld */,
 				FA4A8D9925DED606004973D2 /* AddTaskViewController.swift */,
 				FA75602A25E8B35300D89E33 /* TaskManagerViewController.swift */,
 				FA4A3BD925F0A76300CAFE51 /* UICollectionViewControllerTest.swift */,
@@ -113,6 +115,9 @@
 			dependencies = (
 			);
 			name = "Gamification App";
+			packageProductDependencies = (
+				FAB84D652635058900761CB2 /* Alamofire */,
+			);
 			productName = "Gamification App";
 			productReference = FA9CA9E025DD559900714AB1 /* Gamification App.app */;
 			productType = "com.apple.product-type.application";
@@ -140,6 +145,9 @@
 				Base,
 			);
 			mainGroup = FA9CA9D725DD559900714AB1;
+			packageReferences = (
+				FAB84D642635058900761CB2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = FA9CA9E125DD559900714AB1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -168,7 +176,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA21E04425FBD44200E9DE84 /* TaskDataModel.xcdatamodeld in Sources */,
+				FAEA531E261A926F0002D858 /* TaskDataModel.xcdatamodeld in Sources */,
 				FA4A3BDD25F0A83200CAFE51 /* MyCollectionViewCell.swift in Sources */,
 				FA4A8D9725DED570004973D2 /* Task.swift in Sources */,
 				FA75602525E8AE8F00D89E33 /* Singleton.swift in Sources */,
@@ -384,13 +392,32 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		FAB84D642635058900761CB2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.4.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FAB84D652635058900761CB2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAB84D642635058900761CB2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
+
 /* Begin XCVersionGroup section */
-		FA21E04225FBD44200E9DE84 /* TaskDataModel.xcdatamodeld */ = {
+		FAEA531C261A926F0002D858 /* TaskDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				FA21E04325FBD44200E9DE84 /* TaskDataModel.xcdatamodel */,
+				FAEA531D261A926F0002D858 /* TaskDataModel.xcdatamodel */,
 			);
-			currentVersion = FA21E04325FBD44200E9DE84 /* TaskDataModel.xcdatamodel */;
+			currentVersion = FAEA531D261A926F0002D858 /* TaskDataModel.xcdatamodel */;
 			path = TaskDataModel.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
