@@ -441,6 +441,31 @@
             </objects>
             <point key="canvasLocation" x="-465.21739130434787" y="571.875"/>
         </scene>
+        <!--NewAR View Controller-->
+        <scene sceneID="DMz-NF-4mR">
+            <objects>
+                <viewController id="wqT-g7-Yi4" customClass="NewARViewController" customModule="Gamification_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yIm-4n-SPm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arView multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8eY-ge-OrK">
+                                <rect key="frame" x="0.0" y="86" width="414" height="727"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </arView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zjr-oT-Pco"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="46J-rq-aev"/>
+                    <connections>
+                        <outlet property="ARView" destination="8eY-ge-OrK" id="f7D-U3-ZlM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k9y-cF-GkI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="340.57971014492756" y="591.96428571428567"/>
+        </scene>
         <!--Collection View Controller Test-->
         <scene sceneID="w3G-V0-832">
             <objects>
@@ -566,11 +591,12 @@
                     <connections>
                         <outlet property="collectionView" destination="coA-Q4-wW7" id="OyT-bk-25h"/>
                         <segue destination="ohG-fe-9sq" kind="show" identifier="EditTaskSegue" id="DN6-RG-spK"/>
+                        <segue destination="wqT-g7-Yi4" kind="show" identifier="ARSegue" id="7MD-qH-wxL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Vj-h5-p8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-49.275362318840585" y="-128.57142857142856"/>
+            <point key="canvasLocation" x="-84" y="-210"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="d7I-lq-VwQ">
@@ -622,7 +648,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="HAG-tS-vWX"/>
+        <segue reference="DN6-RG-spK"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="98"/>
