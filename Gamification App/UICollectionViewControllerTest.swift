@@ -48,7 +48,7 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
         print("Number of saved tasks when button clicked: \(results.count)")
         */
         
-        /*
+        
     
         let timestamp = Int(NSDate().timeIntervalSince1970)
 
@@ -108,10 +108,14 @@ class UICollectionViewControllerTest: UIViewController, UICollectionViewDataSour
             }catch{print("failed")}
            
             
-        }*/
+        }
         
+        //performSegue(withIdentifier: "ARSegue", sender: self)
+        
+    }
+    
+    func loadGoodJobScreen(){
         performSegue(withIdentifier: "ARSegue", sender: self)
-        
     }
     
     func taskNotAlreadyAdded(e: eventInfo) -> Bool{

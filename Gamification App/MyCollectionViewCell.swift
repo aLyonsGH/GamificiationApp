@@ -31,6 +31,8 @@ class MyCollectionViewCell: UICollectionViewCell {
         controller.removeCell(toRemovePath: index)
         TaskManager.getTaskManager().completeTask()
         
+        self.controller.loadGoodJobScreen()
+        
     }
     
 }
