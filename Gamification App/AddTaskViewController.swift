@@ -157,10 +157,15 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
     }
     
-   
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        if self.isMovingFromParent {
+            print("resetting to edit")
+            TaskManager.getTaskManager().setTaskToEdit(toEdit: -1)
+        }
+    }
    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       
     }
     
 
