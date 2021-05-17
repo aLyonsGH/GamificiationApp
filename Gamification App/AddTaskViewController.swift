@@ -44,6 +44,7 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBOutlet var visibleImages: Array<UIImageView>!
 
     let pickerData = ["Hobby", "School", "Other"]
+    let lowercasePickerData = ["hobby", "school", "other"]
     var currentPickerVal = ""
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -56,6 +57,7 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         currentPickerVal = pickerData[row]
+        //print(row)
         return pickerData[row]
     }
 
@@ -77,10 +79,12 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         print(TaskManager.getTaskManager().getTaskToEditIndex())
         if(TaskManager.getTaskManager().getTaskToEditIndex()==(-1))
         {
+            print(TaskManager.getTaskType(taskType: currentPickerVal))
             TaskManager.getTaskManager().createTask(label: labelInput.text!, completed: true, description: descriptionInput.text!, taskImages: getImagesFromDisplay(), dateDue: dateInput.date, taskType: TaskManager.getTaskType(taskType: currentPickerVal))
         }
         else
         {
+            print(TaskManager.getTaskType(taskType: currentPickerVal))
             TaskManager.getTaskManager().replaceTask(label: labelInput.text!, completed: true, description: descriptionInput.text!, taskImages: getImagesFromDisplay(), dateDue: dateInput.date, taskType: TaskManager.getTaskType(taskType: currentPickerVal))
         }
         print("new task created")
@@ -97,6 +101,7 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         print("add task loaded")
+        
         typeInput.dataSource = self
         typeInput.delegate = self
         imagePicker.delegate = self
@@ -127,6 +132,11 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             labelInput.text = t?.label;
             descriptionInput.text = t?.description;
             dateInput.date = t!.dateDue;
+            currentPickerVal = Task.getStringType(type: t!.taskType)
+            print("current picker value: \(Task.getStringType(type: t!.taskType))")
+            typeInput.selectRow(lowercasePickerData.firstIndex(of: currentPickerVal)!, inComponent: 0, animated: true)
+            
+            
             
             for i in 0...t!.taskImages.count-1
             {

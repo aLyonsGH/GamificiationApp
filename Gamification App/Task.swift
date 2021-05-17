@@ -40,6 +40,32 @@ class Task {
         //print(seconds)
         return "Days: \(seconds/86400)\nHours: \((seconds%86400)/3600)\nMinutes: \(((seconds%86400)%3600)/60)\nSeconds: \(((seconds%86400)%3600)%60)"
     }
+    
+    static func getStringType(type: Task.TYPE)->String{
+        switch type {
+        case .hobby:
+            return "hobby"
+        case .school:
+             return "school"
+        case .other:
+            return "other"
+        default:
+            return "error"
+        }
+    }
+    
+    static func getTypeString(typeString: String)->Task.TYPE{
+        switch typeString {
+        case "hobby":
+            return .hobby
+        case "school":
+            return .school
+        case "other":
+            return .other
+        default:
+            return .other
+        }
+    }
 }
 
 

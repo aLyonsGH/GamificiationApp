@@ -67,6 +67,7 @@ class TaskManager {
             results[ind].setValue(taskImages[0].pngData(), forKeyPath: "firstImageData")
             results[ind].setValue(taskImages[1].pngData(), forKeyPath: "secondImageData")
             results[ind].setValue(taskImages[2].pngData(), forKeyPath: "thirdImageData")
+            results[ind].setValue(Task.getStringType(type: taskType), forKeyPath: "taskTypeData")
             try managedContext.save()
             TaskManager.tasks[ind].label = label;
             TaskManager.tasks[ind].description = description;
@@ -111,7 +112,7 @@ class TaskManager {
             print(t.labelData);
             if !(t.dueDateData==nil){
                 print("creating task");
-                TaskManager.getTaskManager().createTask(label: t.labelData!, completed: true, description: t.descriptionData!, taskImages: [UIImage(data: t.firstImageData!)!,UIImage(data: t.secondImageData!)!,UIImage(data: t.thirdImageData!)!], dateDue: t.dueDateData!, taskType: TaskManager.getTaskType(taskType: "School"), saveToCoreData: false)
+                TaskManager.getTaskManager().createTask(label: t.labelData!, completed: true, description: t.descriptionData!, taskImages: [UIImage(data: t.firstImageData!)!,UIImage(data: t.secondImageData!)!,UIImage(data: t.thirdImageData!)!], dateDue: t.dueDateData!, taskType: Task.getTypeString(typeString: t.taskTypeData!), saveToCoreData: false)
             }
         }
         
@@ -241,6 +242,7 @@ class TaskManager {
         taskObject.setValue(task.taskImages[0].pngData(), forKeyPath: "firstImageData");
         taskObject.setValue(task.taskImages[1].pngData(), forKeyPath: "secondImageData");
         taskObject.setValue(task.taskImages[2].pngData(), forKeyPath: "thirdImageData");
+        taskObject.setValue(Task.getStringType(type: task.taskType), forKeyPath: "taskTypeData");
         
         print("Length of tasks BEFORE adding a new task to save: \(TaskManager.tasks.count)");
         
