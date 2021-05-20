@@ -24,6 +24,8 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     func displayImages(pickedImage: UIImage)
     {
+        print("Displaying images");
+        print(self.visibleImages[0])
         for n in 0...visibleImages.count-2 {
             self.visibleImages[visibleImages.count-1-n].image = self.visibleImages[visibleImages.count-1-n-1].image
         }
