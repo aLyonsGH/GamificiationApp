@@ -69,6 +69,7 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         }
 
 
+    @IBOutlet weak var screenTitleLabel: UILabel!
     
     @IBOutlet weak var addTaskButtonLabel: UIButton!
     @IBOutlet weak var labelInput: UITextView!
@@ -123,11 +124,15 @@ class AddTaskViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     func editSetup(){
         if TaskManager.getTaskManager().getTaskToEditIndex() == -1{
             addTaskButtonLabel.setTitle("Add Task", for: .normal)
+            screenTitleLabel.text = "Add Task";
             print("not editing");
+            
+            
         }
         else{
             print("editing");
             addTaskButtonLabel.setTitle("Edit Task", for: .normal)
+            screenTitleLabel.text = "Edit Task";
             let t = TaskManager.getTaskManager().loadTaskToEdit();
             labelInput.text = t?.label;
             descriptionInput.text = t?.description;
